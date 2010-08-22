@@ -1,0 +1,18 @@
+login: &login
+  adapter: mysql
+  username: sirenspotter
+  password:
+  socket: /opt/local/var/run/mysql5/mysqld.sock
+
+development:
+  database: sirenspotter_development
+  <<: *login
+
+test:
+  database: sirenspotter_test
+  <<: *login
+
+production:
+  database: sirenspotter_production
+  <<: *login
+

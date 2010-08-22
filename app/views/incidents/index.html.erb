@@ -1,0 +1,6 @@
+Incidents near <%= @origin %>: <br /><br />
+<%- if @incidents.empty? %>
+  None found.
+<%- else %>
+  <%= render :partial => 'incidents/incident', :collection => @incidents %>
+<%- end %>

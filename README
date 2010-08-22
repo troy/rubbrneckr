@@ -1,0 +1,8 @@
+== Welcome to SirenSpotter
+
+1. Clone
+2. Setup database
+3. rake fetch_crimes
+
+Hit / or /incidents?lat=X&lng=Y
+

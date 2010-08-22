@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>SirenSpotter</title>
+	<%= javascript_include_tag 'prototype' %>  
+</head>
+
+<body>
+<div id="loader">
+	<div class="loader">
+    <p>Determining your location (click "OK" if you are prompted).</p>
+
+    Nothing happen? Enter a street address, intersection, or ZIP code:
+    <% form_tag(incidents_path, :method => :get) do -%>
+      <%= text_field_tag :address %>
+      <%= submit_tag 'Show Sirens' %>
+    <% end -%>
+	</div>
+</div>
+
+<script type="text/javascript" language="Javascript">
+
+//loaderContainer = document.getElementById("loader");
+function createMap(position){
+  alert('woot2');
+
+//  window.location.href = '/incidents?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
+//	loaderContainer.getElementsByTagName("p")[0].textContent = "Browser does not support geolocation";
+//	loaderContainer.style.display = "none";
+//	mapInstance.setCenter(currentLatLng, 15);
+//	mapInstance.addOverlay(locationMarker);
+//	locationMarker.openInfoWindow("<h3>Your location</h3>");
+	
+	// Inital location found create a watchPosition instance for continuous updates
+//	coordsListener = navigator.geolocation.watchPosition(updateLocation, handleError);
+};
+
+// Error handlers
+//function failedError(error){
+//  alert('woot3');
+  
+	//Failed to find any location, fallback to Apple HQ
+	
+//	failedLatLng = new CM.LatLng(37.331689,-122.030731);
+//	loaderContainer.getElementsByTagName("p")[0].textContent = "Error performing location";
+//};
+
+function handleError(error){
+  alert('woot');
+//	if(error.code === 1) {
+		//Location services is either disabled or you denied access to your position
+//		failedError();
+//	}// else {
+//	  loaderContainer.getElementsByTagName("p")[0].textContent = "Other error";
+		//Current location could not be determined, falling back to last known within 10 minutes
+	//	navigator.geolocation.getCurrentPosition(cacheLocation, cacheError, {maximumAge:600000, timeout:0});
+	//}
+	
+//	loaderContainer.style.display = "none";
+};
+
+function mapSetup() { 
+  # http://www.slideshare.net/aizatto/location-aware-browsing-4804874
+	if(navigator.geolocation) {
+		// Get current position
+		navigator.geolocation.getCurrentPosition(function(position) {
+		  alert('called');
+		  //window.location.href = '/incidents?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
+		}, function(error) {
+		  alert('error');
+		}); // Request live position
+		//navigator.geolocation.watchPosition(createMap, handleError); // Request live position
+		
+    //alert('after');
+	} else {
+		//loaderContainer.getElementsByTagName("p")[0].textContent = "Browser does not support geolocation";
+		//window.setTimeout(failedError, 1000);
+		alert('ble');
+	}
+};
+
+mapSetup();
+</script>

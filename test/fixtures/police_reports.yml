@@ -1,0 +1,29 @@
+one:
+  id: 1
+  report_number: 2010293313
+  address: XX BLOCK OF BLANCHARD ST
+  icon_url: Vehicle Theft.png
+  crime_code_id: 33
+  reporteddate: 2010-08-22 02:16:00
+  occurdate: 2010-08-21 22:30:00
+  url: True
+  created_at: 2010-08-22 18:19:10
+  updated_at: 2010-08-22 18:19:10
+  lat: 47.61227403
+  lng: -122.345428
+  crime_type_id: 10
+  
+two:
+  id: 2
+  report_number: 2010232312
+  address: XX BLOCK OF OTHER ST
+  icon_url: Vehicle Theft.png
+  crime_code_id: 32
+  reporteddate: 2010-08-11 02:16:00
+  occurdate: 2010-08-11 12:30:00
+  url: True
+  created_at: 2010-08-21 18:19:10
+  updated_at: 2010-08-21 18:19:10
+  lat: 47.62227403
+  lng: -122.3645428
+  crime_type_id: 10

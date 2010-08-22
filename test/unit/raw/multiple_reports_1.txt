@@ -1,0 +1,1 @@
+'<iconCol layerId=\"Shoplifting\"><icon id=\"2010292563\" name=\"THEFT-SHOPLIFT\" reportedDate=\"8/21/2010 2:45:00 PM\" occurDate=\"8/21/2010 2:45:00 PM\"  address=\"4XX BLOCK OF PINE ST\" url=\"True\"  xLoc=\"-122.337320426\" yLoc=\"47.611321241\" image=\"Shoplifting.png\" /></iconCol>'
