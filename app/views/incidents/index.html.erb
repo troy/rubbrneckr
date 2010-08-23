@@ -6,7 +6,9 @@ Incidents near <%= formatted_location(@origin) %>: <br /><br />
 <%- if @incidents.empty? %>
   None found.
 <%- else %>
+  <ul>
   <%= render :partial => 'incidents/incident', :collection => @incidents %>
+  </ul>
 <%- end %>
 
 <br />
