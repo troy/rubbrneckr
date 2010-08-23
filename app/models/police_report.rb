@@ -9,4 +9,8 @@ class PoliceReport < ActiveRecord::Base
   named_scope :recent, :conditions => [ 'reporteddate >= ?', 1.day.ago ]
 
   acts_as_mappable
+  
+  def to_s
+    "#{address}: #{crime_type} (#{crime_code}) - #{reporteddate} (#{report_number})"
+  end
 end

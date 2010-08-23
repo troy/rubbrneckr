@@ -1,59 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>Siren Spotter</title>
-	<%= javascript_include_tag 'prototype' %>  
-	<script src="http://marksilver.net/geo_js/geo.js" type="text/javascript" charset="utf-8"></script>
-</head>
-
-<body onload="initialize();">
-  <div id="current" class="default">
-    <p>Determining your location (click "OK" if you are prompted).</p>
+<div id="current" class="default">
+    <p>Determining your location. Click "Allow" when prompted.</p>
 		<noscript><span class="error">Please enable Javascript and refresh your browser</strong></noscript>
 	</div>
 	
 	<div id="content"></div>
-	
-  Nothing happen? Enter a street address, intersection, or ZIP code:
-  <% form_tag(incidents_path, :method => :get) do -%>
-    <%= text_field_tag :address %>
-    <%= submit_tag 'Show Sirens' %>
-  <% end -%>
+
+	<br />
+  <%= render :partial => 'incidents/search', :locals => { :prompt => 'Or, enter' } %>
 
 <script type="text/javascript" language="Javascript">
+  function initialize()
+  {
+  	if(geo_position_js.init())
+  	{
+  		document.getElementById('current').innerHTML="Obtaining location, please wait...";
+  		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Sorry, couldn't get your location. Type a location."},{timeout: 8000});
+  	}
+  	else
+  	{
+  		document.getElementById('current').innerHTML="Your browser does not provide physical location. Enter an address.";
+  		document.getElementById('current').className="error";
+  	}
+  }
 
-function initialize()
-{
-	if(geo_position_js.init())
-	{
-		document.getElementById('current').innerHTML="Obtaining location, please wait...";
-		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Couldn't get location"},{enableHighAccuracy:true});
-	}
-	else
-	{
-		document.getElementById('current').innerHTML="HTML5 Geolocation functionality not available in your browser.";
-		document.getElementById('current').className="error";
-	}
-}
-
-
-function show_position(p)
-{
-	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Accuracy: " + p.coords.accuracy;
-//	var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
-	document.getElementById('content').innerHTML = "<div id='information'>Latitude: " + p.coords.latitude 
-											+ "<br />Longitude: " + p.coords.longitude 
-											+ "<br />Altitude (Accuracy): " + p.coords.altitude + "(" + p.coords.altitudeAccuracy + ")" 
-											+ "<br />Speed/Heading: " + p.coords.speed + "/" + p.coords.heading
-											+ "<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>";
-
-  window.location.href = '/incidents?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
-}
+  function show_position(p)
+  {
+  	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Showing incidents.";
+    window.location.pathname = '<%= incidents_path %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
+  }
+  initialize();
 </script>
-
-
-</body>
-</html>
