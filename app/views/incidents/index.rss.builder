@@ -2,9 +2,9 @@ xml.instruct!
 
 xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.channel do
-    xml.title       "Seattle dispatches near #{@origin}"
+    xml.title       "Emergencies near #{@origin}"
     xml.link        incidents_url(params)
-    xml.description "Police & fire dispatches"
+    xml.description "Seattle-area police & fire dispatches"
  
     for incident in @incidents
       xml.item do

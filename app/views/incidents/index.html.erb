@@ -2,7 +2,7 @@
   <%= auto_discovery_link_tag(:rss, rss_url, :title => 'RSS Feed')%>
 <% end %>
 
-Incidents near <%= formatted_location(@origin) %>: <br /><br />
+Emergencies near <%= formatted_location(@origin) %>: <br /><br />
 <%- if @incidents.empty? %>
   None found.
 <%- else %>
@@ -11,8 +11,9 @@ Incidents near <%= formatted_location(@origin) %>: <br /><br />
   </ul>
 <%- end %>
 
-<br />
-<%= link_to image_tag('feed-icon-14x14.png', :border => 0), rss_url %> <%= link_to 'Subscribe to RSS', rss_url %> or <%= link_to 'JSON API', json_url %>
+Don't see one near you? Check back later 
+or <%= link_to image_tag('feed-icon-14x14.png', :border => 0), rss_url %> <%= link_to 'Subscribe to RSS feed', rss_url %> for 
+emergencies near here.
 
 <br /><br />
 <%= render :partial => 'incidents/search' %>

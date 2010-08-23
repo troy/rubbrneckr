@@ -16,7 +16,7 @@ one:
 two:
   id: 2
   report_number: 2010232312
-  address: XX BLOCK OF OTHER ST
+  address: 11XX BLOCK OF NW OTHER ST
   icon_url: Vehicle Theft.png
   crime_category_id: 32
   reporteddate: <%= 6.hours.ago %>
