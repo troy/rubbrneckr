@@ -5,7 +5,8 @@ class PoliceReport < ActiveRecord::Base
   validates_uniqueness_of :report_number
   
   default_scope :order => 'reporteddate DESC'
-  
+
+  named_scope :newest, :conditions => [ 'reporteddate >= ?', 90.minutes.ago ]  
   named_scope :recent, :conditions => [ 'reporteddate >= ?', 1.day.ago ]
 
   acts_as_mappable

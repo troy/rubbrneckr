@@ -10,10 +10,16 @@ class IncidentsController < ApplicationController
     else
       @origin = 'Seattle, WA'
     end
-    
-    @incidents = PoliceReport.recent.find(:all, :origin => @origin,
+
+    @incidents = PoliceReport.newest.find(:all, :origin => @origin,
       :within => params[:d] || 2, :limit => 4,
       :order => 'distance ASC, reporteddate DESC')
+    
+    if @incidents.length < 4
+      @incidents = @incidents + PoliceReport.recent.find(:all, :origin => @origin,
+        :within => params[:d] || 2, :limit => (4-@incidents.length),
+        :order => 'distance ASC, reporteddate DESC')
+    end
       
     respond_to do |format|
       format.html
