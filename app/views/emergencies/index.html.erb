@@ -1,8 +1,9 @@
+<% content_for :title do %>Seattle police & fire dispatch emergencies near <%= @origin %><% end %>
 <% content_for :head do %>
   <%= auto_discovery_link_tag(:rss, rss_url, :title => 'RSS Feed')%>
 <% end %>
 
-Emergencies near <%=h formatted_location(@origin) %>:
+Emergencies near <q><%=h formatted_location(@origin) %></q>:
 <%- if @emergencies.empty? %>
   None found.
 <%- else %>
@@ -12,7 +13,7 @@ Emergencies near <%=h formatted_location(@origin) %>:
 <%- end %>
 
 <br />
-Don't see one near you? Check back later 
+Don't see one? Check back later 
 or <%= link_to image_tag('feed-icon-14x14.png', :border => 0), rss_url %> <%= link_to 'subscribe to RSS feed', rss_url %> for 
 emergencies near <%=h formatted_location(@origin) %>.
 

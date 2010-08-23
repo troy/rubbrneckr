@@ -14,4 +14,8 @@ module EmergenciesHelper
   def rss_url
     emergencies_path(params.merge(:format => 'rss'))
   end
+  
+  def link_to_emergencies_at(address)
+    link_to(address, emergencies_path(:address => address))
+  end
 end

@@ -1,9 +1,13 @@
+<% content_for :title do %>Seattle police & fire dispatch emergencies near you<% end %>
+
+<strong>Seattle police & fire emergencies happening right now, from your phone or computer.</strong>
+
+<br /><br />
+
 <div id="current">
   <p>Determining your location. Click "Allow" when prompted.</p>
 	<noscript><span class="error">Please enable Javascript and refresh your browser</strong></noscript>
 </div>
-	
-<div id="content"></div>
 
 <%= render :partial => 'emergencies/search' %>
 
@@ -13,11 +17,11 @@
   	if(geo_position_js.init())
   	{
   		document.getElementById('current').innerHTML="Trying to obtain your location, please wait...";
-  		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Sorry, couldn't find your location. Type a location."},{timeout: 4000});
+  		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Sorry, couldn't find your location. Enter a location below."},{timeout: 4000});
   	}
   	else
   	{
-  		document.getElementById('current').innerHTML="Your browser does not provide physical location. Enter a location.";
+  		document.getElementById('current').innerHTML="Your browser does not provide physical location. Enter a location below.";
   		document.getElementById('current').className="error";
   	}
   }

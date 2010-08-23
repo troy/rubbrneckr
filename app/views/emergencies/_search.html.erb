@@ -1,8 +1,13 @@
 <p>
 <% form_tag(emergencies_path, :method => :get) do -%>
-  <%= label_tag :address, 'Street address, intersection, or ZIP:' %>
-  <br />
+  <strong>Popular</strong>: <%= link_to_emergencies_at('1st & Blanchard') %> (Belltown), 
+  <%= link_to_emergencies_at('Pine & Broadway') %> (Capitol Hill), 
+  <%= link_to_emergencies_at('2nd & Yesler') %> (Pioneer Square)<br />
+
+  <%= label_tag :address, 'Or enter any Seattle address, intersection, or ZIP:' %>
   <%= text_field_tag :address, @search_query %>
+  <br />
   <%= submit_tag 'Find Nearby Emergencies' %>
+  <br />
 <% end -%>
 </p>
