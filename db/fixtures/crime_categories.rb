@@ -1,4 +1,4 @@
-CrimeCode.seed_many(:name, [
+CrimeCategory.seed_many(:name, [
   { :name => 'Animal Complaint' },
   { :name => 'Arrest' },
   { :name => 'Assault' },

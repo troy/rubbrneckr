@@ -55,7 +55,7 @@ class PoliceReportParser
         :address => incident[:address], :url => incident[:url],
         :icon_url => incident[:icon_url], :lat => incident[:lat], :lng => incident[:lng],
         :reporteddate => incident[:reporteddate], :occurdate => incident[:occurdate],
-        :crime_code => CrimeCode.find_by_name(incident[:category])
+        :crime_category => CrimeCategory.find_by_name(incident[:category])
     end
   end
 end

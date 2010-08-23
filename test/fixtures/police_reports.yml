@@ -3,7 +3,7 @@ one:
   report_number: 2010293313
   address: XX BLOCK OF BLANCHARD ST
   icon_url: Vehicle Theft.png
-  crime_code_id: 33
+  crime_category_id: 33
   reporteddate: <%= 12.hours.ago %>
   occurdate: 2010-08-21 22:30:00
   url: True
@@ -18,7 +18,7 @@ two:
   report_number: 2010232312
   address: XX BLOCK OF OTHER ST
   icon_url: Vehicle Theft.png
-  crime_code_id: 32
+  crime_category_id: 32
   reporteddate: <%= 6.hours.ago %>
   occurdate: 2010-08-11 12:30:00
   url: True

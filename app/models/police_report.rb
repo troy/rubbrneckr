@@ -1,6 +1,6 @@
 class PoliceReport < ActiveRecord::Base
   belongs_to :crime_type
-  belongs_to :crime_code
+  belongs_to :crime_category
   
   validates_uniqueness_of :report_number
   
@@ -11,6 +11,6 @@ class PoliceReport < ActiveRecord::Base
   acts_as_mappable
   
   def to_s
-    "#{address}: #{crime_type} (#{crime_code}) - #{reporteddate} (#{report_number})"
+    "#{address}: #{crime_type} (#{crime_category}) - #{reporteddate} (#{report_number})"
   end
 end
