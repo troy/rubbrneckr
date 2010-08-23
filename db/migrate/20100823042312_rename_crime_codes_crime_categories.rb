@@ -1,6 +1,6 @@
 class RenameCrimeCodesCrimeCategories < ActiveRecord::Migration
   def self.up
-    #rename_table :crime_codes, :crime_categories
+    rename_table :crime_codes, :crime_categories
     rename_column :police_reports, :crime_code_id, :crime_category_id
   end
 
