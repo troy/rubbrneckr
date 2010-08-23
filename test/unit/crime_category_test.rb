@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CrimeCodeTest < ActiveSupport::TestCase
+class CrimeCategoryTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

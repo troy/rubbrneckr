@@ -2,12 +2,12 @@ desc "Download & import crime data from City of Seattle. Argument: DURATION=<# o
 task :fetch_crimes => :environment do
   duration = ENV['DURATION'].to_i || 0
 
-  p = PoliceReportFetcher.new
+  police_report_fetcher = PoliceReportFetcher.new
   end_date = Time.now.strftime('%m/%d/%Y')
   start_date = duration.days.ago.strftime('%m/%d/%Y')
 
-  CrimeCode.all.each do |c|
-    p.get_crime_data(c.name, start_date, end_date)
-    sleep 1
+  CrimeCategory.all.each do |category|
+    police_report_fetcher.get_crime_data(category.name, start_date, end_date)
+    sleep 0.2
   end
 end
