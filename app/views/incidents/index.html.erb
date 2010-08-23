@@ -2,18 +2,21 @@
   <%= auto_discovery_link_tag(:rss, rss_url, :title => 'RSS Feed')%>
 <% end %>
 
-Emergencies near <%= formatted_location(@origin) %>: <br /><br />
+Emergencies near <%=h formatted_location(@origin) %>:
 <%- if @incidents.empty? %>
   None found.
 <%- else %>
   <ul>
-  <%= render :partial => 'incidents/incident', :collection => @incidents %>
+    <%= render :partial => 'incidents/incident', :collection => @incidents %>
   </ul>
 <%- end %>
 
+<br />
 Don't see one near you? Check back later 
-or <%= link_to image_tag('feed-icon-14x14.png', :border => 0), rss_url %> <%= link_to 'Subscribe to RSS feed', rss_url %> for 
-emergencies near here.
+or <%= link_to image_tag('feed-icon-14x14.png', :border => 0), rss_url %> <%= link_to 'subscribe to RSS feed', rss_url %> for 
+emergencies near <%=h formatted_location(@origin) %>.
 
-<br /><br />
+<br />
+<hr width=20%>
+
 <%= render :partial => 'incidents/search' %>

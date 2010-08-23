@@ -7,13 +7,15 @@
   <title>Siren Spotter</title>
   
 	<%= javascript_include_tag 'prototype' %>
-  <%= javascript_include_tag 'geo.js' %>
+  <%= javascript_include_tag 'geo' %>
+  <%= stylesheet_link_tag 'base' %>
+  <%= stylesheet_link_tag 'application' %>
 
   <%= yield(:head) %>
 </head>
 
 <body>
-
+<div id="title_header">Siren Spotter</div>
 <%= yield %>
 
 </body>

@@ -1,31 +1,30 @@
-<div id="current" class="default">
-    <p>Determining your location. Click "Allow" when prompted.</p>
-		<noscript><span class="error">Please enable Javascript and refresh your browser</strong></noscript>
-	</div>
+<div id="current">
+  <p>Determining your location. Click "Allow" when prompted.</p>
+	<noscript><span class="error">Please enable Javascript and refresh your browser</strong></noscript>
+</div>
 	
-	<div id="content"></div>
+<div id="content"></div>
 
-	<br />
-  <%= render :partial => 'incidents/search' %>
+<%= render :partial => 'incidents/search' %>
 
 <script type="text/javascript" language="Javascript">
   function initialize()
   {
   	if(geo_position_js.init())
   	{
-  		document.getElementById('current').innerHTML="Obtaining location, please wait...";
-  		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Sorry, couldn't get your location. Type a location."},{timeout: 8000});
+  		document.getElementById('current').innerHTML="Trying to obtain your location, please wait...";
+  		geo_position_js.getCurrentPosition(show_position,function(){document.getElementById('current').innerHTML="Sorry, couldn't find your location. Type a location."},{timeout: 4000});
   	}
   	else
   	{
-  		document.getElementById('current').innerHTML="Your browser does not provide physical location. Enter an address.";
+  		document.getElementById('current').innerHTML="Your browser does not provide physical location. Enter a location.";
   		document.getElementById('current').className="error";
   	}
   }
 
   function show_position(p)
   {
-  	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Showing incidents.";
+  	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Showing emergencies.";
     window.location.href = '<%= incidents_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
   }
   initialize();
