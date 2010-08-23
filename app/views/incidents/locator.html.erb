@@ -26,7 +26,7 @@
   function show_position(p)
   {
   	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Showing incidents.";
-    window.location.pathname = '<%= incidents_path %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
+    window.location.href = '<%= incidents_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
   }
   initialize();
 </script>

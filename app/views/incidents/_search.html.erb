@@ -1,5 +1,5 @@
 Street address, intersection, or ZIP:
 <% form_tag(incidents_path, :method => :get) do -%>
   <%= text_field_tag :address, @search_query %>
-  <%= submit_tag 'Show Sirens' %>
+  <%= submit_tag 'Find Nearby Emergencies' %>
 <% end -%>
