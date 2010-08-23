@@ -1,4 +1,4 @@
-class IncidentsController < ApplicationController
+class EmergenciesController < ApplicationController
   before_filter :maintain_search_query
   
   def index
@@ -11,21 +11,21 @@ class IncidentsController < ApplicationController
       @origin = 'Seattle, WA'
     end
 
-    @incidents = PoliceReport.newest.find(:all, :origin => @origin,
+    @emergencies = PoliceReport.newest.find(:all, :origin => @origin,
       :within => params[:d] || 2, :limit => 4,
       :order => 'distance ASC, reporteddate DESC')
     
-    if @incidents.length < 4
-      @incidents = @incidents + PoliceReport.recent.find(:all, :origin => @origin,
-        :within => params[:d] || 2, :limit => (4-@incidents.length),
+    if @emergencies.length < 4
+      @emergencies = @emergencies + PoliceReport.recent.find(:all, :origin => @origin,
+        :within => params[:d] || 2, :limit => (4-@emergencies.length),
         :order => 'distance ASC, reporteddate DESC')
     end
       
     respond_to do |format|
       format.html
       format.rss  { render :layout => false }
-      format.json { render :json     => @incidents.to_json }
-      format.xml  { render :xml      => @incidents.to_xml }
+      format.json { render :json     => @emergencies.to_json }
+      format.xml  { render :xml      => @emergencies.to_xml }
     end
   end
   

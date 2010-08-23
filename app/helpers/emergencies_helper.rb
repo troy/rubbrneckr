@@ -1,4 +1,4 @@
-module IncidentsHelper
+module EmergenciesHelper
   def short_time_ago_in_words(t)
     time_ago_in_words(t).sub('about ', '')
   end
@@ -8,10 +8,10 @@ module IncidentsHelper
   end
   
   def json_url
-    incidents_path(params.merge(:format => 'json'))
+    emergencies_path(params.merge(:format => 'json'))
   end
   
   def rss_url
-    incidents_path(params.merge(:format => 'rss'))
+    emergencies_path(params.merge(:format => 'rss'))
   end
 end

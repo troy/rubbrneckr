@@ -1,5 +1,5 @@
 <p>
-<% form_tag(incidents_path, :method => :get) do -%>
+<% form_tag(emergencies_path, :method => :get) do -%>
   <%= label_tag :address, 'Street address, intersection, or ZIP:' %>
   <br />
   <%= text_field_tag :address, @search_query %>

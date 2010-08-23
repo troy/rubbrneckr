@@ -3,11 +3,11 @@
 <% end %>
 
 Emergencies near <%=h formatted_location(@origin) %>:
-<%- if @incidents.empty? %>
+<%- if @emergencies.empty? %>
   None found.
 <%- else %>
   <ul>
-    <%= render :partial => 'incidents/incident', :collection => @incidents %>
+    <%= render :partial => 'emergencies/police_report', :collection => @emergencies %>
   </ul>
 <%- end %>
 
@@ -19,4 +19,4 @@ emergencies near <%=h formatted_location(@origin) %>.
 <br />
 <hr width=20%>
 
-<%= render :partial => 'incidents/search' %>
+<%= render :partial => 'emergencies/search' %>

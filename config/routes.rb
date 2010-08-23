@@ -30,10 +30,10 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
-  map.resources :incidents, :collection => { :locator => :get }
+  map.resources :emergencies, :collection => { :locator => :get }
   
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "incidents", :action => :locator
+  map.root :controller => :emergencies, :action => :locator
 
   # See how all your routes lay out with "rake routes"
 

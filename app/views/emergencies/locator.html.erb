@@ -5,7 +5,7 @@
 	
 <div id="content"></div>
 
-<%= render :partial => 'incidents/search' %>
+<%= render :partial => 'emergencies/search' %>
 
 <script type="text/javascript" language="Javascript">
   function initialize()
@@ -25,7 +25,7 @@
   function show_position(p)
   {
   	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Showing emergencies.";
-    window.location.href = '<%= incidents_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
+    window.location.href = '<%= emergencies_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
   }
   initialize();
 </script>

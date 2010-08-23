@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IncidentsControllerTest < ActionController::TestCase
+class EmergenciesControllerTest < ActionController::TestCase
   context 'GET to locator' do
     setup do
       get :locator
@@ -20,11 +20,11 @@ class IncidentsControllerTest < ActionController::TestCase
     end
     
     should_respond_with :success
-    should_assign_to :incidents
+    should_assign_to :emergencies
     should_assign_to :search_query
     
-    should 'find 1 incident' do
-      assert_equal 1, assigns(:incidents).length
+    should 'find 1 emergency' do
+      assert_equal 1, assigns(:emergencies).length
     end
   end
     
@@ -43,8 +43,8 @@ class IncidentsControllerTest < ActionController::TestCase
     end
     
     should_respond_with :success
-    should 'find 0 incidents' do
-      assert_equal 0, assigns(:incidents).length
+    should 'find 0 emergencies' do
+      assert_equal 0, assigns(:emergencies).length
     end
   end
   
@@ -54,8 +54,8 @@ class IncidentsControllerTest < ActionController::TestCase
     end
 
     should_respond_with :success
-    should 'find 2 incidents' do
-      assert_equal 2, assigns(:incidents).length
+    should 'find 2 emergencies' do
+      assert_equal 2, assigns(:emergencies).length
     end
   end
 end
