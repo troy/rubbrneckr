@@ -8,7 +8,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
  
     for incident in @incidents
       xml.item do
-        xml.title       "#{incident.address}: #{incident.crime_type}"
+        xml.title       "#{incident.address_formatted}: #{incident.crime_type}"
         xml.description incident.to_s
       end
     end

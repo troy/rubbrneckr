@@ -12,6 +12,12 @@ class PoliceReport < ActiveRecord::Base
   acts_as_mappable
   
   def to_s
-    "#{address}: #{crime_type} (#{crime_category}) - #{reporteddate} (#{report_number})"
+    "#{address_formatted}: #{crime_type} (#{crime_category}) - #{reporteddate} (#{report_number})"
+  end
+  
+  def address_formatted
+    s = address.capitalize.gsub(/\b\w/){$&.upcase}
+    s = s.gsub(/ (Ne|Nw|Se|Sw) /, &lambda {" #{$1.upcase} "})
+    s.gsub(' Of ', ' of ')  
   end
 end
