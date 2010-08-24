@@ -5,7 +5,7 @@ class FireDispatch < ActiveRecord::Base
   
   default_scope :order => 'occurred DESC'
 
-  named_scope :newest, :conditions => [ 'occurred >= ?', 11.hours.ago ]    
+  named_scope :newest, :conditions => [ 'occurred >= ?', 2.hours.ago ]    
   named_scope :recent, :conditions => [ 'occurred >= ?', 1.day.ago ]
   
   acts_as_mappable

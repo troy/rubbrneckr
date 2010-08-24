@@ -5,16 +5,16 @@
 
 Emergencies near <q><%=h formatted_location(@origin) %></q>:
 <ul>
-  <%- if @police_reports.empty? %>
-    No recent police dispatches nearby.
-  <%- else %>
-    <%= render :partial => 'emergencies/police_report', :collection => @police_reports %>
-  <%- end %>
   <%- if @fire_dispatches.empty? %>  
     No recent fire/aid dispatches nearby.
   <%- else %>
     <%= render :partial => 'emergencies/fire_dispatch', :collection => @fire_dispatches %>
   <%- end %>  
+  <%- if @police_reports.empty? %>
+    No recent police dispatches nearby.
+  <%- else %>
+    <%= render :partial => 'emergencies/police_report', :collection => @police_reports %>
+  <%- end %>
 </ul>
 
 <br />
