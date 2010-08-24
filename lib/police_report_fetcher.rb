@@ -40,12 +40,7 @@ offenseCode=#{type}"
     r.body
   end
   
-
-# turns out there's no use for this
-  def get_incident_detail(report_number)
-    PoliceReportParser.new(incident_detail_request(report_number))  
-  end
-
+# turns out there's no use for this; the result is duplicative and a bit different
   def incident_detail_request(report_number)
     r = crime_request do |req|
       req.url "/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetIncidentDetail&_session=no"

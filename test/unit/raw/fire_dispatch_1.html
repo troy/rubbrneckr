@@ -1,0 +1,134 @@
+<meta http-equiv="refresh" content="60">
+<html>
+<head>
+    
+<title>Seattle Fire Real-Time 911</title>
+<link REL="stylesheet" HREF="fontStyles.css" TYPE="text/css">
+
+
+<script Language="javascript">
+<!--
+
+	var ltgray = "#E0E0E0";
+	var white = "#FFFFFF";
+
+	// Change row color when MouseOver occurs
+	function rowOn(obj)
+	{
+		obj.style.backgroundColor = ltgray;
+	}
+	
+	function rowOff(obj)	
+	{
+		obj.style.backgroundColor = white;
+	}
+//-->
+</script>
+
+
+</head>
+<body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+
+ 
+<table width="100%" bgcolor=#FFFFFF border=0 cellspacing=0 cellpadding=4>
+  <tr>
+  	<td class="regtext" width=100% colspan="6">
+      <table border="0" cellspacing="0" width="100%">
+         <tr>
+            <td width="19%" class="regtext">
+			<img border="0" src="grsq.gif"> = Active Incident</td>
+            <td width="25%" class="regtext">
+			<img border="0" src="blsq.gif"> = Closed Incident</td>
+            <td width="18%" class="regtext">&nbsp;</td>
+            <td width="38%" class="regtext">
+       			&nbsp;Automatic Refresh in:  
+				<script language="JavaScript">
+					var dt = new Date();
+					TargetDate = dt.setSeconds(dt.getSeconds() + 60);
+					BackColor = "#999966";
+					ForeColor = "navy";
+					CountActive = true;
+					DisplayFormat = "%%S%%";
+					FinishMessage = "";
+				</script>
+				<script language="JavaScript" src="autoRefresh.js"></script>
+				&nbsp;<span class="regsmall">Seconds</span>
+			
+			  </td>
+         </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+  	<td class="regbold" width=16%>Date/Time</td>
+  	<td class="regbold" width=10%>Incident #</td>
+  	<td class="regbold" width=7%>Level</td>
+  	<td class="regbold" width=17%>Units</td>
+  	<td class="regbold" width=36%>Location</td>
+  	<td class="regbold" width=14%>Type</td>
+  </tr>
+  <tr>
+  	<td colspan="6">
+  	
+  		<table width="100%" border="0" cellpadding="1" bgcolor="#990000">
+  			<tr>
+  				<td valign="top">
+    				<table width="100%" border=0 cellpadding="2" cellspacing="0" bgcolor="#FFFFFF">
+    					
+    
+        <tr id=row_1 onMouseOver='rowOn(row_1)' onMouseOut='rowOff(row_1)'>
+            <td class="active" width=16% valign="top">8/23/2010 10:41:40 AM</td>
+            <td class="active" width=10% valign="top">F100077319</td>
+            <td class="active" width=7% valign="top">1</td>
+            <td class="active" width=17% valign="top">A2</td>
+            <td class="active" width=36% valign="top">100 W Harrison St</td>
+            <td class="active" width=14% valign="top">Aid Response</td>
+        </tr>
+      
+        <tr id=row_2 onMouseOver='rowOn(row_2)' onMouseOut='rowOff(row_2)'>
+            <td class="active" width=16% valign="top">8/23/2010 10:39:00 AM</td>
+            <td class="active" width=10% valign="top">F100077318</td>
+            <td class="active" width=7% valign="top">1</td>
+            <td class="active" width=17% valign="top">E5</td>
+            <td class="active" width=36% valign="top">1111 E Madison St</td>
+            <td class="active" width=14% valign="top">Aid Response</td>
+        </tr>
+      
+        <tr id=row_3 onMouseOver='rowOn(row_3)' onMouseOut='rowOff(row_3)'>
+            <td class="closed" width=16% valign="top">8/23/2010 10:34:19 AM</td>
+            <td class="closed" width=10% valign="top">F100077317</td>
+            <td class="closed" width=7% valign="top">1</td>
+            <td class="closed" width=17% valign="top">E10</td>
+            <td class="closed" width=36% valign="top">4th Av / Spring St</td>
+            <td class="closed" width=14% valign="top">Aid Response</td>
+        </tr>
+      
+        <tr id=row_4 onMouseOver='rowOn(row_4)' onMouseOut='rowOff(row_4)'>
+            <td class="active" width=16% valign="top">8/23/2010 10:31:09 AM</td>
+            <td class="active" width=10% valign="top">F100077312</td>
+            <td class="active" width=7% valign="top">1</td>
+            <td class="active" width=17% valign="top">M1</td>
+            <td class="active" width=36% valign="top">1100 5th Av</td>
+            <td class="active" width=14% valign="top">Medic Response</td>
+        </tr>
+      
+        <tr id=row_5 onMouseOver='rowOn(row_5)' onMouseOut='rowOff(row_5)'>
+            <td class="closed" width=16% valign="top">8/23/2010 10:28:06 AM</td>
+            <td class="closed" width=10% valign="top">F100077315</td>
+            <td class="closed" width=7% valign="top">1</td>
+            <td class="closed" width=17% valign="top">E9</td>
+            <td class="closed" width=36% valign="top">3408 Albion Pl N</td>
+            <td class="closed" width=14% valign="top">Aid Response</td>
+        </tr>
+      
+  
+  
+  </table>
+  </table>
+  </td>
+  </tr>
+  </table>
+  <font face='Arial,Helvetica,Sans-Serif' Size='2'>&nbsp;Retrieved 116 dispatch messages for 8/23/2010&nbsp;&nbsp;&nbsp;<i>(screen automatically refreshes every 60 seconds)</i><br></font>
+
+  </body>
+  </html>

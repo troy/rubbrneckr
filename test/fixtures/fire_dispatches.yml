@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dispatch_number: F123456789
+  dispatch_type_id: 1
+  address: 414 Olive Way
+  occurred: 2010-08-23 18:12:13
+  units: E5
+  lat: 9.99
+  lng: 9.99
+
+two:
+  dispatch_number: F234567890
+  dispatch_type_id: 2
+  address: 4th & Pike
+  occurred: 2010-08-23 18:12:13
+  units: E5 L2 M3
+  lat: 9.99
+  lng: 9.99
