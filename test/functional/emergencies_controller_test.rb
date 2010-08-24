@@ -25,7 +25,7 @@ class EmergenciesControllerTest < ActionController::TestCase
     should_assign_to :search_query
     
     should 'find the right number of emergencies' do
-      assert_equal 2, assigns(:police_reports).length
+      assert_equal 1, assigns(:police_reports).length
     end
   end
     
