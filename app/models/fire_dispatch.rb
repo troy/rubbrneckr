@@ -13,4 +13,8 @@ class FireDispatch < ActiveRecord::Base
   def to_s
     "#{address}: #{dispatch_type} - #{occurred} (#{dispatch_number})"
   end
+  
+  def unit_count
+    units.split(' ').count
+  end
 end

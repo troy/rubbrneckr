@@ -11,21 +11,32 @@ class EmergenciesController < ApplicationController
       @origin = 'Seattle, WA'
     end
 
-    @emergencies = PoliceReport.newest.find(:all, :origin => @origin,
+    @police_reports = PoliceReport.newest.find(:all, :origin => @origin,
       :within => params[:d] || 2, :limit => 4,
       :order => 'distance ASC, reporteddate DESC')
     
-    if @emergencies.length < 4
-      @emergencies = @emergencies + PoliceReport.recent.find(:all, :origin => @origin,
-        :within => params[:d] || 2, :limit => (4-@emergencies.length),
+    if @police_reports.length < 4
+      @police_reports = @police_reports + PoliceReport.recent.find(:all, :origin => @origin,
+        :within => params[:d] || 2, :limit => (4-@police_reports.length),
         :order => 'distance ASC, reporteddate DESC')
     end
+    
+    @fire_dispatches = FireDispatch.newest.find(:all, :origin => @origin,
+      :within => params[:d] || 2, :limit => 4,
+      :order => 'distance ASC, occurred DESC')
+    
+    if @fire_dispatches.length < 4
+      @fire_dispatches = @fire_dispatches + FireDispatch.recent.find(:all, :origin => @origin,
+        :within => params[:d] || 2, :limit => (4-@fire_dispatches.length),
+        :order => 'distance ASC, occurred DESC')
+    end
+    
       
     respond_to do |format|
       format.html
       format.rss  { render :layout => false }
-      format.json { render :json     => @emergencies.to_json }
-      format.xml  { render :xml      => @emergencies.to_xml }
+      format.json { render :json     => (@police_reports+@fire_dispatches).to_json }
+      format.xml  { render :xml      => (@police_reports+@fire_dispatches).to_xml }
     end
   end
   
