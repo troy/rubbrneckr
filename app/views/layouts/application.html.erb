@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title><%= "#{yield(:title)} - " if yield(:title) %>RubbrNeckr</title>
   
 	<%= javascript_include_tag 'prototype' %>
   <%= javascript_include_tag 'geo' %>
   <%= stylesheet_link_tag 'base' %>
   <%= stylesheet_link_tag 'application' %>
+  <link rel="apple-touch-icon" href="/images/iphone_icon.jpg" />
 
   <%= yield(:head) %>
 </head>
