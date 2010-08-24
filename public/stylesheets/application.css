@@ -10,3 +10,8 @@ div#title_header {
 	text-transform: uppercase;
 	padding-left: 5px;
 }
+
+div#title_header a:link, div#title_header a:visited {
+	color: white;
+    text-decoration: none;
+}
