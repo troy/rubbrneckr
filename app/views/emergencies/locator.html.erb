@@ -29,7 +29,7 @@
   function show_position(p)
   {
     var new_url = '<%= emergencies_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
-  	document.getElementById('current').innerHTML='<font size=+1>Location identified. <strong><a href="' + new_url + '">Click here for nearby emergencies!</a></strong></font>';
+  	document.getElementById('current').innerHTML='<font size=+2>Location identified. <strong><a href="' + new_url + '">Click here for nearby emergencies!</a></strong></font>';
   }
   initialize();
 </script>
