@@ -22,7 +22,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
       end
     end
     
-    for fire_dispatches in @fire_dispatches
+    for fire_dispatch in @fire_dispatches
       xml.item do
         xml.title       "#{fire_dispatch.address}: #{fire_dispatch.dispatch_type}"
         xml.description fire_dispatch.to_s
