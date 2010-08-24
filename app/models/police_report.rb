@@ -6,8 +6,8 @@ class PoliceReport < ActiveRecord::Base
   
   default_scope :order => 'reporteddate DESC'
 
-  named_scope :newest, :conditions => [ 'reporteddate >= ?', 2.hours.ago ]  
-  named_scope :recent, :conditions => [ 'reporteddate >= ?', 1.day.ago ]
+  named_scope :newest, :conditions => [ 'reporteddate >= ?', 18.hours.ago ]  
+  named_scope :recent, :conditions => [ 'reporteddate >= ?', 2.days.ago ]
 
   acts_as_mappable
   
