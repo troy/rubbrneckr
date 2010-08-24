@@ -5,7 +5,7 @@
 <br /><br />
 
 <div id="current">
-  <p>Determining your location. Click "Allow" when prompted.</p>
+  <p>Determining your location. Click "Allow" if prompted.</p>
 	<noscript><span class="error">Please enable Javascript and refresh your browser</strong></noscript>
 </div>
 
@@ -28,8 +28,8 @@
 
   function show_position(p)
   {
-  	document.getElementById('current').innerHTML="<strong>Location identified.</strong> Showing emergencies.";
-    window.location.href = '<%= emergencies_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
+    var new_url = '<%= emergencies_url %>?lat=' + p.coords.latitude + '&lng=' + p.coords.longitude;
+  	document.getElementById('current').innerHTML='<font size=+1>Location identified. <strong><a href="' + new_url + '">Click here for nearby emergencies!</a></strong></font>';
   }
   initialize();
 </script>
