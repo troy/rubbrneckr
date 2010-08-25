@@ -2,9 +2,7 @@ require 'faraday'
 
 class PoliceReportFetcher
   def self.connection
-    @connection ||= Faraday::Connection.new(:url => 'http://web5.seattle.gov')# do |builder|
-#      builder.use Faraday::Adapter::Typhoeus # make http request with typhoeus
-#    end
+    @connection ||= Faraday::Connection.new(:url => 'http://web5.seattle.gov')
   end
 
   def connection

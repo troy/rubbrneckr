@@ -29,11 +29,12 @@ class FireDispatchParser
   
   def save
     incidents.each do |incident|
-      dispatch_type = DispatchType.find_or_create_by_name(incident[:dispatch_type])
-
       fire_dispatch = FireDispatch.find_or_create_by_dispatch_number(incident[:id])
+
+      next unless fire_dispatch.new_record? || incident[:units] != fire_dispatch.units
+
+      dispatch_type = DispatchType.find_or_create_by_name(incident[:dispatch_type])
     
-      # GeoKit
       if fire_dispatch.lat || fire_dispatch.lng
         lat = fire_dispatch.lat
         lng = fire_dispatch.lng
