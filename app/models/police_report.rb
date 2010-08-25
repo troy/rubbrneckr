@@ -20,4 +20,8 @@ class PoliceReport < ActiveRecord::Base
     s = s.gsub(/ (Ne|Nw|Se|Sw) /, &lambda {" #{$1.upcase} "})
     s.gsub(' Of ', ' of ')  
   end
+  
+  def report_url
+    "http://web1.seattle.gov/police/records/PoliceReports/PoliceReport.ashx?go=#{report_number}"
+  end
 end
