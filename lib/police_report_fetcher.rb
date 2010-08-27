@@ -12,7 +12,8 @@ class PoliceReportFetcher
   def crime_request(&block)
     connection.post do |req|
       req['Content-Type'] = 'application/xml'
-      req['Origin'] = 'http://web5.seattle.gov/'
+      req['Cache-Control'] = 'max-age=0'
+      req['Origin'] = 'http://web5.seattle.gov'
       req['Referer'] = 'http://web5.seattle.gov/mnm/policereports.aspx'
       req['User-Agent'] = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us) AppleWebKit/533.17.8 (KHTML, like Gecko) Version/5.0.1 Safari/533.17.8'
 
@@ -25,6 +26,10 @@ class PoliceReportFetcher
   end
   
   def crime_data_request(type, start_date, end_date)
+    # expected without leading zero
+    start_date.sub!(/^0/, '')
+    end_date.sub!(/^0/, '')
+    
     r = crime_request do |req|
       req.url "/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no"
       req.body = "topleft=47.743825019093656, -122.43833543383
