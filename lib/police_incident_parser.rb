@@ -36,6 +36,7 @@ class PoliceIncidentParser
       raw_incident.each_pair { |k,v| incident[k] = strip_escapes(v) }
       
       incident[:category] = category unless category.blank?
+
       incidents << incident
     end
     
@@ -44,18 +45,16 @@ class PoliceIncidentParser
   
   def save
     incidents.each do |incident|
-      police_report = PoliceReport.find_or_create_by_report_number(incident[:id])
-      puts police_report.inspect
+      police_report = PoliceReport.find_or_initialize_by_report_number(incident[:id])
 
       next unless police_report.new_record?
 
-      crime_type = CrimeType.find_or_create_by_name(incident[:crime_type])
-
-      police_report.update_attributes :crime_type => crime_type,
+      police_report.update_attributes! :crime_type => CrimeType.find_or_create_by_name(incident[:crime_type]),
         :address => incident[:address], 
         :lat => incident[:lat], :lng => incident[:lng],
         :occurdate => incident[:occurdate],
-        :incident_category => IncidentCategory.find_by_name(incident[:category])
+        :incident_category => IncidentCategory.find_by_name(incident[:category]),
+        :report_number => incident[:id]
     end
   end
 end
