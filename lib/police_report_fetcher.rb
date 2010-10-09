@@ -1,6 +1,10 @@
 require 'faraday'
 
 class PoliceReportFetcher
+  # parses 2 data feeds - one for incident dispatches published in near-realtime to
+  # http://web5.seattle.gov/mnm/incidentresponse.aspx under "911 Incident Responses"
+  # tab, and other 6-12 hours delayed at same URL under "Police Reports" tab
+  
   def self.connection
     @connection ||= Faraday::Connection.new(:url => 'http://web5.seattle.gov')
   end
@@ -31,7 +35,7 @@ class PoliceReportFetcher
     end_date.sub!(/^0/, '')
     
     r = crime_request do |req|
-      req.url "/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no"
+      req.url '/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no'
       req.body = "topleft=47.743825019093656, -122.43833543383
 bottomRight=47.35789706038656, -122.14359329028322
 startDate=#{start_date}
@@ -43,14 +47,20 @@ offenseCode=#{type}"
     r.body
   end
   
-# turns out there's no use for this; the result is duplicative and a bit different
-  def incident_detail_request(report_number)
+  def get_incident_data(type, start_date_offset, end_date_offset)
+    PoliceIncidentParser.new(incident_data_request(type, start_date_offset, end_date_offset))
+  end
+  
+  def incident_data_request(type, start_date_offset, end_date_offset)
     r = crime_request do |req|
-      req.url "/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetIncidentDetail&_session=no"
-      req.body = "GONumber=#{report_number}"
-      # @body="'<icon id=\"2010288847\" name=\"&lt;img src=\\'images/crime/Arrest.png\\' border=\\'0\\' style=&quot;padding-right:5px;&quot;/&gt;WARRARR-MISDEMEANOR\" reportedDate=\"8/18/2010 8:52:00 PM\" occurDate=\"8/18/2010 8:52:00 PM\"  address=\"12XX BLOCK OF THOMAS ST\" url=\"GEN\"  />'"
+      req.url '/MNM/ajax/IncidentResponse,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no'
+      req.body = "topleft=47.743825019093656, -122.43833543383
+bottomRight=47.35789706038656, -122.14359329028322
+startDateOffset=#{start_date_offset}
+endDateOffset=#{end_date_offset}
+mirCode=#{type}"
     end
-    
+
     r.body
   end
 end

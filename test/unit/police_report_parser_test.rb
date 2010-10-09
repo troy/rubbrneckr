@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PoliceReportFetcherTest < ActiveSupport::TestCase
+class PoliceReportParserTest < ActiveSupport::TestCase
   context 'a PoliceReportParser' do
     context 'parsing a series of reports' do
       setup do
-        @police_report_parser = PoliceReportParser.new(static_data('multiple_reports_2.txt'))
+        @police_report_parser = PoliceReportParser.new(static_data('police_reports_2.txt'))
       end
 
       should 'remove escaped quotes' do
@@ -33,7 +33,6 @@ class PoliceReportFetcherTest < ActiveSupport::TestCase
 
         context 'saving a second time' do
           setup do
-
             @police_report_parser.save
           end
           

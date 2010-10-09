@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class FireDispatchFetcherTest < ActiveSupport::TestCase
+class FireDispatchParserTest < ActiveSupport::TestCase
   context 'a FireDispatchParser' do
     context 'parsing a series of dispatches' do
       setup do
