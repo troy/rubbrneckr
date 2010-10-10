@@ -19,6 +19,7 @@ class PoliceReportFetcher
       req['Cache-Control'] = 'max-age=0'
       req['Origin'] = 'http://web5.seattle.gov'
       req['Referer'] = 'http://web5.seattle.gov/mnm/policereports.aspx'
+      req['Accept'] = '*/*'
       req['User-Agent'] = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us) AppleWebKit/533.17.8 (KHTML, like Gecko) Version/5.0.1 Safari/533.17.8'
 
       yield req
@@ -48,12 +49,13 @@ offenseCode=#{type}"
   end
   
   def get_incident_data(type, start_date_offset, end_date_offset)
-    PoliceIncidentParser.new(incident_data_request(type, start_date_offset, end_date_offset))
+    PoliceIncidentParser.new(incident_data_request(type, start_date_offset, end_date_offset)).save
   end
   
   def incident_data_request(type, start_date_offset, end_date_offset)
     r = crime_request do |req|
-      req.url '/MNM/ajax/IncidentResponse,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no'
+      req['Referer'] = 'http://web5.seattle.gov/mnm/incidentresponse.aspx'
+      req.url '/MNM/ajax/IncidentResponse,App_Web_bbjmvyia.ashx?_method=GetCrimeData&_session=no'
       req.body = "topleft=47.743825019093656, -122.43833543383
 bottomRight=47.35789706038656, -122.14359329028322
 startDateOffset=#{start_date_offset}

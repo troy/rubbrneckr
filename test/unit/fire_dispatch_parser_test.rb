@@ -39,7 +39,7 @@ class FireDispatchParserTest < ActiveSupport::TestCase
             @fire_dispatch_parser.save
           end
           
-          should_not_change 'FireDispatch.count'
+          should_not_change('FireDispatch count') { FireDispatch.count }
         end
       end
     end

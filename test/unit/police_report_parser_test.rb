@@ -36,7 +36,7 @@ class PoliceReportParserTest < ActiveSupport::TestCase
             @police_report_parser.save
           end
           
-          should_not_change 'PoliceReport.count'
+          should_not_change('PoliceReport count') { PoliceReport.count }
         end
       end
     end

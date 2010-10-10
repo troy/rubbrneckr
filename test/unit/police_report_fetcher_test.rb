@@ -23,7 +23,7 @@ class PoliceReportFetcherTest < ActiveSupport::TestCase
       setup do
         PoliceReportFetcher.connection.build do |b|
           b.adapter :test do |stub|
-            stub.post('/MNM/ajax/IncidentResponse,App_Web_uywmdsag.ashx?_session=no&_method=GetCrimeData') { |env| [ 200, nil, static_data('police_incidents_1.txt') ] }
+            stub.post('/MNM/ajax/IncidentResponse,App_Web_bbjmvyia.ashx?_session=no&_method=GetCrimeData') { |env| [ 200, nil, static_data('police_incidents_1.txt') ] }
           end
         end
 

@@ -45,16 +45,12 @@ class PoliceIncidentParser
   
   def save
     incidents.each do |incident|
-      police_report = PoliceReport.find_or_initialize_by_report_number(incident[:id])
+      next if PoliceReport.find_by_report_number(incident[:id])
 
-      next unless police_report.new_record?
-
-      police_report.update_attributes! :crime_type => CrimeType.find_or_create_by_name(incident[:crime_type]),
-        :address => incident[:address], 
-        :lat => incident[:lat], :lng => incident[:lng],
-        :occurdate => incident[:occurdate],
-        :incident_category => IncidentCategory.find_by_name(incident[:category]),
-        :report_number => incident[:id]
+      PoliceReport.create! :crime_type => CrimeType.find_or_create_by_name(incident[:crime_type]),
+        :address => incident[:address], :lat => incident[:lat], :lng => incident[:lng],
+        :occurdate => incident[:occurdate], :report_number => incident[:id],
+        :incident_category => IncidentCategory.find_by_name(incident[:category])
     end
   end
 end

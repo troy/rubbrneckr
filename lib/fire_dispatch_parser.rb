@@ -29,24 +29,23 @@ class FireDispatchParser
   
   def save
     incidents.each do |incident|
-      fire_dispatch = FireDispatch.find_or_create_by_dispatch_number(incident[:id])
+      fire_dispatch = FireDispatch.find_by_dispatch_number(incident[:id])
 
-      next unless fire_dispatch.new_record? || incident[:units] != fire_dispatch.units
-
-      dispatch_type = DispatchType.find_or_create_by_name(incident[:dispatch_type])
-    
-      if fire_dispatch.lat || fire_dispatch.lng
-        lat = fire_dispatch.lat
-        lng = fire_dispatch.lng
-      else
-        res = MultiGeocoder.geocode("#{incident[:address]}, Seattle, WA")
-        lat = res.lat
-        lng = res.lng
+      if fire_dispatch
+        if incident[:units] != fire_dispatch.units
+          # more units were dispatched since the last update
+          fire_dispatch.units = incident[:units]
+          fire_dispatch.save!
+        end
+        
+        next
       end
+      
+      res = MultiGeocoder.geocode("#{incident[:address]}, Seattle, WA")
 
-      fire_dispatch.update_attributes :dispatch_type => dispatch_type, :dispatch_number => incident[:id],
-        :address => incident[:address], :occurred => incident[:occurred], :units => incident[:units],
-        :lat => lat, :lng => lng
+      FireDispatch.create! :dispatch_type =>  DispatchType.find_or_create_by_name(incident[:dispatch_type]), 
+        :dispatch_number => incident[:id], :lat => res.lat, :lng => res.lng,
+        :address => incident[:address], :occurred => incident[:occurred], :units => incident[:units]
     end
   end
 end
