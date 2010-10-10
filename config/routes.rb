@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :emergencies, :collection => { :locator => :get }
   map.resources :info
+  map.resources :datasources, :collection => { :update_fires => :get }
   
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => :emergencies, :action => :locator
