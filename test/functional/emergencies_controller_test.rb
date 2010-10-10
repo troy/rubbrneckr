@@ -56,7 +56,7 @@ class EmergenciesControllerTest < ActionController::TestCase
 
     should_respond_with :success
     should 'find only recent nearby emergencies' do
-      assert_equal 4, assigns(:police_reports).length
+      assert_equal 3, assigns(:police_reports).length
     end
   end
 end

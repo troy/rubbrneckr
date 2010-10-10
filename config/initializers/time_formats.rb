@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:preferred] = '%I:%M %p on %a'

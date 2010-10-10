@@ -20,6 +20,8 @@ class EmergenciesController < ApplicationController
         :within => params[:d] || 2, :limit => (4-@police_reports.length),
         :order => 'distance ASC, reporteddate DESC')
     end
+
+    @police_reports.uniq!
     
     @fire_dispatches = FireDispatch.newest.find(:all, :origin => @origin,
       :within => params[:d] || 0.6, :limit => 4,
@@ -31,6 +33,7 @@ class EmergenciesController < ApplicationController
         :order => 'distance ASC, occurred DESC')
     end
     
+    @fire_dispatches.uniq!
       
     respond_to do |format|
       format.html
