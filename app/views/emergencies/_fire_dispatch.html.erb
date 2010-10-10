@@ -1,1 +1,1 @@
-<li><%= image_tag 'fire_aid.png', :style => 'margin-right: 2px' %><strong><%=h fire_dispatch.address %></strong>: <%=h fire_dispatch.dispatch_type %> (<%= pluralize(fire_dispatch.unit_count, 'unit') %>) - <%= short_time_ago_in_words(fire_dispatch.occurred) %> ago</li>
+<li><%= image_tag 'fire_aid.png', :style => 'margin-right: 2px' %><strong><%=h fire_dispatch.address %></strong>: <%=h fire_dispatch.dispatch_type %> (<%= pluralize(fire_dispatch.unit_count, 'unit') %>) - <%= fire_dispatch.occurred.to_s(:preferred) %> ago</li>
