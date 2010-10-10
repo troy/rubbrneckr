@@ -26,6 +26,13 @@ class PoliceReportFetcher
     end
   end
   
+  def get_all_crime_data(start_date, end_date)
+    CrimeCategory.all.each do |category|
+      get_crime_data(category.name, start_date, end_date)
+      sleep 0.1
+    end
+  end
+  
   def get_crime_data(type, start_date, end_date)
     PoliceReportParser.new(crime_data_request(type, start_date, end_date)).save
   end
@@ -48,6 +55,13 @@ offenseCode=#{type}"
     r.body
   end
   
+  def get_all_incident_data(start_date_offset = 6, end_date_offset = 0)
+    IncidentCategory.all.each do |category|
+      get_incident_data(category.name, start_date_offset, end_date_offset)
+      sleep 0.2
+    end
+  end
+    
   def get_incident_data(type, start_date_offset, end_date_offset)
     PoliceIncidentParser.new(incident_data_request(type, start_date_offset, end_date_offset)).save
   end
