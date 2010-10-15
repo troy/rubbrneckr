@@ -12,7 +12,7 @@ class EmergenciesController < ApplicationController
     end
 
     @police_reports = PoliceReport.newest.find(:all, :origin => @origin,
-      :within => params[:d] || 0.6, :limit => 4,
+      :within => params[:d] || 0.8, :limit => 4,
       :order => 'reporteddate DESC')
     
     if @police_reports.length < 4
@@ -24,7 +24,7 @@ class EmergenciesController < ApplicationController
     @police_reports.uniq!
     
     @fire_dispatches = FireDispatch.newest.find(:all, :origin => @origin,
-      :within => params[:d] || 0.6, :limit => 4,
+      :within => params[:d] || 1.0, :limit => 4,
       :order => 'occurred DESC')
     
     if @fire_dispatches.length < 4
