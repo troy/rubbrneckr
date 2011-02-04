@@ -18,7 +18,7 @@ namespace :export do
       csv << ['Report Number', 'Occurred', 'Reported', 'Address', 'Lat', 'Lng', 'Crime Type', 'Crime Category', 'Report URL']
 
       PoliceReport.all.each do |p|
-        csv << [p.report_number,  p.occurdate, p.reporteddate, p.address, p.lat, p.lng, p.crime_type, p.category, p.report_url]
+        csv << [p.report_number,  p.occurdate, p.reporteddate, p.address || '', p.lat, p.lng, p.crime_type, p.category, p.report_url]
       end
     end
   end
