@@ -14,9 +14,9 @@ namespace :export do
   end
   
   task :police => :environment do
-    csv << ['Report Number', 'Occurred', 'Reported', 'Address', 'Lat', 'Lng', 'Crime Type', 'Crime Category', 'Incident Type', 'Report URL']
-    
     CSV::Writer.generate(STDOUT) do |csv|
+      csv << ['Report Number', 'Occurred', 'Reported', 'Address', 'Lat', 'Lng', 'Crime Type', 'Crime Category', 'Incident Type', 'Report URL']
+
       PoliceReport.all.each do |p|
         csv << [p.report_number,  p.occurdate, p.reporteddate, p.address_formatted, p.lat, p.lng, p.crime_type, p.category, p.incident_type, p.report_url]
       end
