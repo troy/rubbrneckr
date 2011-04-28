@@ -43,7 +43,8 @@ class PoliceReportFetcher
     end_date.sub!(/^0/, '')
     
     r = crime_request do |req|
-      req.url '/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no'
+      #req.url '/MNM/ajax/Crime,App_Web_uywmdsag.ashx?_method=GetCrimeData&_session=no'
+      req.url '/mnm/incidentresponse.aspx?_method=GetCrimeData&_session=no'
       req.body = "topleft=47.743825019093656, -122.43833543383
 bottomRight=47.35789706038656, -122.14359329028322
 startDate=#{start_date}
