@@ -1,0 +1,48 @@
+GEM
+  remote: http://rubygems.org/
+  remote: http://gems.github.com/
+  specs:
+    actionmailer (2.3.8)
+      actionpack (= 2.3.8)
+    actionpack (2.3.8)
+      activesupport (= 2.3.8)
+      rack (~> 1.1.0)
+    activerecord (2.3.8)
+      activesupport (= 2.3.8)
+    activeresource (2.3.8)
+      activesupport (= 2.3.8)
+    activesupport (2.3.8)
+    addressable (2.2.4)
+    faraday (0.5.4)
+      addressable (~> 2.2.2)
+      multipart-post (~> 1.1.0)
+      rack (>= 1.1.0, < 2)
+    geokit (1.5.0)
+    multipart-post (1.1.0)
+    mysql (2.8.1)
+    nokogiri (1.4.4)
+    rack (1.1.0)
+    rails (2.3.8)
+      actionmailer (= 2.3.8)
+      actionpack (= 2.3.8)
+      activerecord (= 2.3.8)
+      activeresource (= 2.3.8)
+      activesupport (= 2.3.8)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    remote_syslog_logger (1.0.1)
+      syslog_protocol
+    syslog_protocol (0.9.0)
+    thoughtbot-shoulda (2.10.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  faraday
+  geokit
+  mysql
+  nokogiri
+  rails (= 2.3.8)
+  remote_syslog_logger
+  thoughtbot-shoulda (~> 2.10.0)
