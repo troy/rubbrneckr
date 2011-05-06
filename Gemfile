@@ -9,6 +9,8 @@ gem 'nokogiri'
 
 gem 'geokit'
 
+gem 'remote_syslog_logger'
+
 group :test do
   gem 'thoughtbot-shoulda', '~> 2.10.0'
 end
